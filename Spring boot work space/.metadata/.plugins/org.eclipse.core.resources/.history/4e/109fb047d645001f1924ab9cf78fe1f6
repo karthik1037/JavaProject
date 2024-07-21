@@ -1,0 +1,18 @@
+package com.ihub.www.controller;
+
+import com.ihub.www.service.EmployeeService;
+
+@RestController
+@RequestMapping("/api/v1/")
+public class EmployeeController 
+{
+	@Autowired
+	EmployeeService employeeService;
+	
+	@GetMapping("/employees")
+	public List<Employee> getAllEmployees()
+	{
+		return employeeService.getAllEmployees();
+	}
+
+}
