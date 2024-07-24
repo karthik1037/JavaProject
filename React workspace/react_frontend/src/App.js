@@ -5,7 +5,7 @@ import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
 import { BrowserRouter as Router,Route,Routes,Link } from 'react-router-dom';
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
-import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
+import UpdateEmployeeComponent from './components/updateEmployeeComponent';
 
 function App() {
   return (

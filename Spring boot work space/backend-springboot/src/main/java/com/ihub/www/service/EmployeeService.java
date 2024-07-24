@@ -4,8 +4,12 @@ package com.ihub.www.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 import com.ihub.www.Exception.ResourceNotFoundException;
 import com.ihub.www.model.Employee;
@@ -39,6 +43,13 @@ public class EmployeeService
 		Employee updateEmp=employeeRepository.save(emp);
 		return ResponseEntity.ok(updateEmp);
 	}
+	public ResponseEntity<HttpStatus> deleteEmployee(Long id)
+	{
+		Employee employee=employeeRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Employee Does not Exit"));
+		employeeRepository.delete(employee);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
 
 
 

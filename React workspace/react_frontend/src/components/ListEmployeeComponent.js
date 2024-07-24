@@ -23,6 +23,21 @@ export default class ListEmployeeComponent extends Component {
             this.setState({employees:res.data})
         })
     }
+    deleteEmployee=(employeeId)=>
+        {
+            EmployeeService.deleteEmployee(employeeId).then(res=>
+                {
+                    EmployeeService.getEmployees().then((res)=>
+                    {
+                        this.setState({employees:res.data})
+                    }) 
+    
+                }).catch(error=>
+                    {
+                        console.log(error);
+                    })
+        }
+    
 
 
   render() {
@@ -55,7 +70,7 @@ export default class ListEmployeeComponent extends Component {
                                       <td>
                                          
          <Link to={`/update-employee/${employee.id}`} className="btn btn-info" >update</Link>  
-                                          
+         <button className='btn btn-danger' style={{marginLeft:"15px"}} onClick={()=> this.deleteEmployee(employee.id)}>Delete</button>                                 
                                       </td> 
                                 </tr>
                             )
